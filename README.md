@@ -24,21 +24,20 @@ Command line options:
    Turns on C++ support for HeaderDoc
  * `--with-headerdoc [PATH]`  
    Specifies a custom path for the `headerdoc2html` utility
- * `--source [PATH]` - **Mandatory**  
-   The path of the source files/headers--source
- * `--output [PATH]` - **Mandatory**  
-   The path of the output directory (the directory must exist)
- * `--project-name [VALUE]` - **Mandatory**  
-   The name of the project
- * `--project-copyright [VALUE]` - **Mandatory**  
-   The copyright string (may contain date format specifiers)
- * `--project-version [VALUE]` - **Mandatory**  
-   The project version string
+ * `--source [PATH]`  
+   The path of the source files/headers (**mandatory**)
+ * `--output [PATH]`  
+   The path of the output directory (**mandatory** - the directory must exist)
+ * `--project-name [VALUE]`  
+   The name of the project (**mandatory**)
+ * `--project-copyright [VALUE]`  
+   The copyright string (**mandatory** - may contain date format specifiers)
+ * `--project-version [VALUE]`  
+   The project version string (**mandatory**)
  * `--project-timezone [VALUE]`  
-   An optional timezone specifier (eg: Europe/Zurich)
- * `--company-name [VALUE]` - **Mandatory**    
-   The company name
-   An optional timezone specifier (eg: Europe/Zurich)
+   An optional timezone specifier (eg: `Europe/Zurich`)
+ * `--company-name [VALUE]`  
+   The company name (**mandatory**)
  * `--company-url [VALUE]`   
    The URL of the company website
  * `--page-home [PATH]`  
@@ -48,11 +47,11 @@ Command line options:
  * `--source-root-prefix [PATH]`  
    A path prefix to strip from the documentation output
  * `--class-prefix [PATH]`  
-   A optional path from which the files should be categorised as classes.
+   An optional path from which the files should be categorised as classes.
  * `--functions-prefix [PATH]`  
-   A optional path from which the files should be categorised as functions.
+   An optional path from which the files should be categorised as functions.
  * `--types-prefix [PATH]`  
-   A optional path from which the files should be categorised as types.
+   An optional path from which the files should be categorised as types.
    
 
 Invocation example

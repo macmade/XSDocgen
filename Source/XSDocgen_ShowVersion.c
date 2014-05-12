@@ -25,8 +25,9 @@
 /* $Id$ */
 
 #include <XSDocgen.h>
+#include <stdio.h>
 
 void XSDocgen_ShowVersion( void )
 {
-    
+    printf( "XSDocgen - Version %s\n", XSDOCGEN_VERSION );
 }
