@@ -4,7 +4,7 @@ XSDocgen
 About
 -----
 
-An Apple-like documentation generator based on HeaderDoc.
+An Apple-like documentation generator for C, C++ and Objective-C based on HeaderDoc.
 
 Example documentation
 ---------------------
