@@ -24,13 +24,13 @@
 
 /* $Id$ */
 
-#include <stdlib.h>
 #include <XSDocgen.h>
+#include <stdlib.h>
 
-XSDocgen_Arguments * XSDocgen_ParseArguments( int argc, const char ** argv )
+void XSDocgen_FreeString( char * str )
 {
-    ( void )argc;
-    ( void )argv;
-    
-    return NULL;
+    if( str != NULL )
+    {
+        free( str );
+    }
 }
