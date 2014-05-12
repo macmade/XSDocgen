@@ -6,6 +6,18 @@ About
 
 An Apple-like documentation generator for C, C++ and Objective-C based on HeaderDoc.
 
+XSDocgen uses the [HeaderDoc](https://developer.apple.com/library/mac/documentation/DeveloperTools/Conceptual/HeaderDoc/intro/intro.html) utility to produce documentation from header files in XML format.  
+Once the XML files have been generated, it will create a standalone PHP website, displaying the documentation.
+
+Highlights
+----------
+
+ * Support for custom HTML/PHP pages for additional documentation (companion guides).
+ * Printer friendly version.
+ * Full search from the documentation and the additional pages.
+ * Full XSHTML 1.0 strict and CSS compliance.
+ * C, C++ and Objective-C support.
+
 Example documentation
 ---------------------
 
