@@ -28,57 +28,36 @@
 #include <sys/stat.h>
 #include <stdlib.h>
 #include <string.h>
-#include <stdio.h>
 #include <errno.h>
+
+#include <stdio.h>
 
 bool XSDocgen_CreateDirectory( const char * path, const char * name )
 {
     char * dir;
     int    e;
-    size_t dirLength;
-    size_t pathLength;
-    size_t nameLength;
     
     if( XSDocgen_DirectoryExists( path ) == false )
     {
         return false;
     }
     
-    pathLength = strlen( path );
-    nameLength = strlen( name );
-    dirLength  = pathLength + nameLength + 2;
-    dir        = calloc( dirLength, 1 );
-    
-    if( dir == NULL )
-    {
-        return false;
-    }
-    
-    strlcat( dir, path, dirLength );
-    
-    dirLength -= pathLength;
-    
-    if( path[ strlen( path ) - 1 ] != '/' )
-    {
-        strlcat( dir, "/", dirLength );
-        
-        dirLength -= 1;
-    }
-    
-    strlcat( dir, name, dirLength );
+    dir = XSDocgen_CreateString( path );
+    dir = XSDocgen_AppendString( dir, "/" );
+    dir = XSDocgen_AppendString( dir, name );
     
     if( XSDocgen_DirectoryExists( dir ) )
     {
-        free( dir );
+        XSDocgen_FreeString( dir );
         
         return true;
     }
     
-    e = mkdir( dir, 755 );
+    e = mkdir( dir, S_IRWXU | S_IRGRP | S_IXGRP | S_IROTH | S_IXOTH );
     
-    free( dir );
+    XSDocgen_FreeString( dir );
     
-    if( e == 0 || e == EEXIST )
+    if( e == 0 )
     {
         return true;
     }

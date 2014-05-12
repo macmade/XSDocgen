@@ -56,6 +56,9 @@ DIR_BUILD_TEMP                  := $(DIR_BUILD)Intermediates/
 DIR_SRC                         := $(DIR)Source/
 DIR_INC                         := $(DIR)Source/include/
 
+# Resources directories
+DIR_RESOURCES                   := $(DIR)Resources/
+
 #-------------------------------------------------------------------------------
 # File suffixes
 #-------------------------------------------------------------------------------
@@ -160,6 +163,14 @@ test: all
 install: all
 	
 	@echo $(call _PRINT,Install,Installing product)
+	@install -d -m 755 /usr/local/bin
+	@install -d -m 755 /usr/local/share/XSDocgen/CSS/Resources
+	@install -d -m 755 /usr/local/share/XSDocgen/PHP/Classes/XS/Docset
+	@install -m 644 $(DIR_RESOURCES)CSS/XSDoc.css /usr/local/share/XSDocgen/CSS
+	@for f in $(DIR_RESOURCES)CSS/Resources/*; do install -m 644 $$f /usr/local/share/XSDocgen/CSS/Resources; done
+	@for f in $(DIR_RESOURCES)PHP/Classes/XS/*.php; do install -m 644 $$f /usr/local/share/XSDocgen/PHP/Classes/XS; done
+	@for f in $(DIR_RESOURCES)PHP/Classes/XS/Docset/*.php; do install -m 644 $$f /usr/local/share/XSDocgen/PHP/Classes/XS/Docset; done
+	@install -m 755 $(DIR_BUILD_PRODUCTS)$(PRODUCT) /usr/local/bin
 
 #-------------------------------------------------------------------------------
 # Targets with second expansion
