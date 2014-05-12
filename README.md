@@ -20,8 +20,6 @@ Command line options:
    Displays the program's version
  * `--silent`  
    Don't output anything to the standard output (including errors)
- * `--help`  
-   Displays the program's help
  * `--enable-c++`  
    Turns on C++ support for HeaderDoc
  * `--with-headerdoc [PATH]`  
