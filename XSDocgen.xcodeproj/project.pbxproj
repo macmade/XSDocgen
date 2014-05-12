@@ -10,6 +10,9 @@
 		058C2B0D1921462F00F5AAA4 /* README.md */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = README.md; sourceTree = "<group>"; };
 		058C2B101921464600F5AAA4 /* main.c */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.c; path = main.c; sourceTree = "<group>"; };
 		058C2B11192146B400F5AAA4 /* Makefile */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.make; path = Makefile; sourceTree = "<group>"; };
+		058C2B1319214F4700F5AAA4 /* XSDocgen-Functions.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "XSDocgen-Functions.h"; sourceTree = "<group>"; };
+		058C2B1419214F5400F5AAA4 /* XSDocgen-Types.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "XSDocgen-Types.h"; sourceTree = "<group>"; };
+		058C2B1519214F6400F5AAA4 /* XSDocgen.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = XSDocgen.h; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXGroup section */
@@ -33,9 +36,20 @@
 		058C2B0F1921462F00F5AAA4 /* Source */ = {
 			isa = PBXGroup;
 			children = (
+				058C2B1219214F2900F5AAA4 /* include */,
 				058C2B101921464600F5AAA4 /* main.c */,
 			);
 			path = Source;
+			sourceTree = "<group>";
+		};
+		058C2B1219214F2900F5AAA4 /* include */ = {
+			isa = PBXGroup;
+			children = (
+				058C2B1319214F4700F5AAA4 /* XSDocgen-Functions.h */,
+				058C2B1419214F5400F5AAA4 /* XSDocgen-Types.h */,
+				058C2B1519214F6400F5AAA4 /* XSDocgen.h */,
+			);
+			path = include;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */

@@ -24,10 +24,10 @@
 
 /* $Id$ */
 
-#include <stdlib.h>
-#include <XSDocgen.h>
+#ifndef _XSDOCGEN_H_
+#define _XSDOCGEN_H_
 
-int main( int argc, const char * argv[] )
-{
-    return EXIT_SUCCESS;
-}
+#include <XSDocgen-Types.h>
+#include <XSDocgen-Functions.h>
+
+#endif /* _XSDOCGEN_H_ */
