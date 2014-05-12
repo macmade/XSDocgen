@@ -41,10 +41,9 @@ typedef struct
 {
     bool              help;
     bool              version;
-    bool              silent;
+    bool              verbose;
     bool              cpp;
     char              _pad_0[ 4 ];
-    const char      * headerDoc;
     const char      * source;
     const char      * output;
     const char      * projectName;
@@ -55,8 +54,9 @@ typedef struct
     const char      * companyURL;
     const char      * pageHome;
     XSDocgen_Page   * pages;
+    const char      * excludeFile;
     const char      * sourceRootPrefix;
-    const char      * classPrefix;
+    const char      * classesPrefix;
     const char      * functionsPrefix;
     const char      * typesPrefix;
 }

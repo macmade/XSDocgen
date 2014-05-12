@@ -35,4 +35,12 @@ void                 XSDocgen_FreeArguments( XSDocgen_Arguments * args );
 void XSDocgen_ShowHelp( void );
 void XSDocgen_ShowVersion( void );
 
+bool XSDocgen_FileExists( const char * path );
+bool XSDocgen_DirectoryExists( const char * path );
+bool XSDocgen_CreateDirectory( const char * path, const char * name );
+
+char * XSDocgen_CreateString( const char * str );
+char * XSDocgen_AppendString( char * str, const char * append );
+void   XSDocgen_FreeString( char * str );
+
 #endif /* _XSDOCGEN_FUNCTIONS_H_ */
