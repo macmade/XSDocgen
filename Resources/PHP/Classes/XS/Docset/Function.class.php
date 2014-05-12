@@ -1,3 +1,5 @@
+<?php
+
 /*******************************************************************************
  * The MIT License (MIT)
  * 
@@ -24,27 +26,12 @@
 
 /* $Id$ */
 
-#include <stdlib.h>
-#include <XSDocgen.h>
+require_once dirname( __FILE__ ) . DIRECTORY_SEPARATOR . 'Member.class.php';
 
-int main( int argc, const char * argv[] )
+class XS_Docset_Function extends XS_Docset_Member
 {
-    XSDocgen_Arguments * args;
-    
-    args = XSDocgen_ParseArguments( argc, argv );
-    
-    if( args == NULL || args->help )
+    public function __construct( SimpleXMLElement $xml )
     {
-        XSDocgen_ShowHelp();
-        
-        return EXIT_SUCCESS;
+        parent::__construct( $xml );
     }
-    else if( args->version )
-    {
-        XSDocgen_ShowVersion();
-        
-        return EXIT_SUCCESS;
-    }
-    
-    return EXIT_SUCCESS;
 }
