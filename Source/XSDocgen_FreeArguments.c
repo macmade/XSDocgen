@@ -27,24 +27,26 @@
 #include <stdlib.h>
 #include <XSDocgen.h>
 
-int main( int argc, const char * argv[] )
+void XSDocgen_FreeArguments( XSDocgen_Arguments * args )
 {
-    XSDocgen_Arguments * args;
+    XSDocgen_Page * page;
+    XSDocgen_Page * next;
     
-    args = XSDocgen_ParseArguments( argc, argv );
-    
-    if( args == NULL || args->help )
+    if( args == NULL )
     {
-        XSDocgen_ShowHelp();
-        
-        return EXIT_SUCCESS;
-    }
-    else if( args->version )
-    {
-        XSDocgen_ShowVersion();
-        
-        return EXIT_SUCCESS;
+        return;
     }
     
-    return EXIT_SUCCESS;
+    page = args->pages;
+    
+    while( page != NULL )
+    {
+        next = page->next;
+        
+        free( page );
+        
+        page = next;
+    }
+    
+    free( args );
 }

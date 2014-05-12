@@ -27,6 +27,39 @@
 #ifndef _XSDOCGEN_TYPES_H_
 #define _XSDOCGEN_TYPES_H_
 
+#include <stdbool.h>
 
+typedef struct XSDocgen_PageStruct
+{
+    const char                 * title;
+    const char                 * path;
+    struct XSDocgen_PageStruct * next;
+}
+XSDocgen_Page;
+
+typedef struct
+{
+    bool              help;
+    bool              version;
+    bool              silent;
+    bool              cpp;
+    char              _pad_0[ 4 ];
+    const char      * headerDoc;
+    const char      * source;
+    const char      * output;
+    const char      * projectName;
+    const char      * projectCopyright;
+    const char      * projectVersion;
+    const char      * projectTimezone;
+    const char      * companyName;
+    const char      * companyURL;
+    const char      * pageHome;
+    XSDocgen_Page   * pages;
+    const char      * sourceRootPrefix;
+    const char      * classPrefix;
+    const char      * functionsPrefix;
+    const char      * typesPrefix;
+}
+XSDocgen_Arguments;
 
 #endif /* _XSDOCGEN_TYPES_H_ */

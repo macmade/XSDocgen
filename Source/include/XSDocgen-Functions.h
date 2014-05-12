@@ -29,6 +29,10 @@
 
 #include <XSDocgen-Types.h>
 
+XSDocgen_Arguments * XSDocgen_ParseArguments( int argc, const char ** argv );
+void                 XSDocgen_FreeArguments( XSDocgen_Arguments * args );
 
+void XSDocgen_ShowHelp( void );
+void XSDocgen_ShowVersion( void );
 
 #endif /* _XSDOCGEN_FUNCTIONS_H_ */

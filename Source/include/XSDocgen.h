@@ -27,6 +27,7 @@
 #ifndef _XSDOCGEN_H_
 #define _XSDOCGEN_H_
 
+#include <XSDocgen-Warnings.h>
 #include <XSDocgen-Types.h>
 #include <XSDocgen-Functions.h>
 

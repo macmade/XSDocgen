@@ -24,27 +24,7 @@
 
 /* $Id$ */
 
-#include <stdlib.h>
 #include <XSDocgen.h>
 
-int main( int argc, const char * argv[] )
-{
-    XSDocgen_Arguments * args;
-    
-    args = XSDocgen_ParseArguments( argc, argv );
-    
-    if( args == NULL || args->help )
-    {
-        XSDocgen_ShowHelp();
-        
-        return EXIT_SUCCESS;
-    }
-    else if( args->version )
-    {
-        XSDocgen_ShowVersion();
-        
-        return EXIT_SUCCESS;
-    }
-    
-    return EXIT_SUCCESS;
-}
+void XSDocgen_ShowHelp( void )
+{}
