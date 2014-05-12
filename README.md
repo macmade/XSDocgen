@@ -15,7 +15,7 @@ Highlights
  * Support for custom HTML/PHP pages for additional documentation (companion guides).
  * Printer friendly version.
  * Full search from the documentation and the additional pages.
- * Full XSHTML 1.0 strict and CSS compliance.
+ * Full XHTML 1.0 strict and CSS compliance.
  * C, C++ and Objective-C support.
 
 Example documentation
