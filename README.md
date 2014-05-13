@@ -51,6 +51,8 @@ Command line options
    The path of the output directory (**mandatory** - the directory must exist).
  * `--clear`  
    Clears all previous output files from the XSDocgen output directories.
+ * `--undocumented`  
+   Keeps undocumented members.
  * `--project-name [VALUE]`  
    The name of the project (**mandatory**).
  * `--project-copyright [VALUE]`  

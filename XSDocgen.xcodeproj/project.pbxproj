@@ -51,6 +51,9 @@
 		0504B3E41922A2390074A488 /* Docset.class.php */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.script.php; path = Docset.class.php; sourceTree = "<group>"; };
 		0504B3E51922A9F90074A488 /* Constant.class.php */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.script.php; path = Constant.class.php; sourceTree = "<group>"; };
 		0504B3E61922AE190074A488 /* Class.class.php */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.script.php; path = Class.class.php; sourceTree = "<group>"; };
+		0504B3E71922C56B0074A488 /* Method.class.php */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.script.php; path = Method.class.php; sourceTree = "<group>"; };
+		0504B3E81922C56B0074A488 /* Property.class.php */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.script.php; path = Property.class.php; sourceTree = "<group>"; };
+		0504B3E91922C9DF0074A488 /* InstanceVariable.class.php */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.script.php; path = InstanceVariable.class.php; sourceTree = "<group>"; };
 		0572029119215379004644BB /* XSDocgen */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; includeInIndex = 0; path = XSDocgen; sourceTree = BUILT_PRODUCTS_DIR; };
 		057202A01921554C004644BB /* XSDocgen-Warnings.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "XSDocgen-Warnings.h"; sourceTree = "<group>"; };
 		057202A1192162EE004644BB /* XSDocgen_DirectoryExists.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = XSDocgen_DirectoryExists.c; sourceTree = "<group>"; };
@@ -138,6 +141,9 @@
 				0504B3DF1922A2390074A488 /* Function.class.php */,
 				0504B3E51922A9F90074A488 /* Constant.class.php */,
 				0504B3E61922AE190074A488 /* Class.class.php */,
+				0504B3E71922C56B0074A488 /* Method.class.php */,
+				0504B3E81922C56B0074A488 /* Property.class.php */,
+				0504B3E91922C9DF0074A488 /* InstanceVariable.class.php */,
 				0504B3E01922A2390074A488 /* Header.class.php */,
 				0504B3E11922A2390074A488 /* Macro.class.php */,
 				0504B3E21922A2390074A488 /* Member.class.php */,
