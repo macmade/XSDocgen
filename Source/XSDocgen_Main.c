@@ -31,32 +31,41 @@
 
 int main( int argc, const char * argv[] )
 {
-    XSDocgen_Arguments * args;
-    bool                 exit;
-    int                  e;
-    char               * headerdoc;
-    char               * xmlDir;
-    char               * cssDir;
-    char               * phpDir;
-    char               * index;
-    char               * indexFile;
-    FILE               * fh;
-    XSDocgen_Page      * page;
+    bool                      exit;
+    int                       e;
+    XSDocgen_Arguments      * args;
+    char                    * headerdoc;
+    char                    * xmlDir;
+    char                    * cssDir;
+    char                    * phpDir;
+    char                    * index;
+    char                    * indexFile;
+    FILE                    * fh;
+    XSDocgen_Page           * page;
+    XSDocgen_HTMLHeaderLine * headerLine;
     
     exit = false;
     args = XSDocgen_ParseArguments( argc, argv );
+    
+    xmlDir      = NULL;
+    cssDir      = NULL;
+    phpDir      = NULL;
+    headerdoc   = NULL;
+    index       = NULL;
+    indexFile   = NULL;
+    fh          = NULL;
     
     if( args == NULL || args->help )
     {
         XSDocgen_ShowHelp();
         
-        return EXIT_SUCCESS;
+        goto success;
     }
     else if( args->version )
     {
         XSDocgen_ShowVersion();
         
-        return EXIT_SUCCESS;
+        goto success;
     }
     
     if( args->source           == NULL ) { printf( "Missing argument: --source [PATH]\n" );             exit = true; }
@@ -72,10 +81,10 @@ int main( int argc, const char * argv[] )
     
     if( exit )
     {
-        return EXIT_FAILURE;
+        goto failure;
     }
     
-    printf( "Staring XSDocgen\n" );
+    printf( "Starting XSDocgen\n" );
     printf( "\n" );
     printf( "    Source:                %s\n", args->source );
     printf( "    Output:                %s\n", args->output );
@@ -110,22 +119,31 @@ int main( int argc, const char * argv[] )
     
     printf( "\n" );
     
-    printf( "Creating directories...\n" );
-    
-    if( XSDocgen_CreateDirectory( args->output, "XML" ) == false ) { printf( "Error: cannot create directory (XML - %s)\n", args->output ); return EXIT_FAILURE; }
-    if( XSDocgen_CreateDirectory( args->output, "PHP" ) == false ) { printf( "Error: cannot create directory (PHP - %s)\n", args->output ); return EXIT_FAILURE; }
-    if( XSDocgen_CreateDirectory( args->output, "CSS" ) == false ) { printf( "Error: cannot create directory (CSS - %s)\n", args->output ); return EXIT_FAILURE; }
-    
-    printf( "Generating XML files using HeaderDoc (this might take a while)...\n" );
-    
-    headerdoc = XSDocgen_CreateString( "headerdoc2html -u -X -H " );
-    
     xmlDir    = XSDocgen_CreateString( args->output );
     xmlDir    = XSDocgen_AppendString( xmlDir, "/XML" );
     cssDir    = XSDocgen_CreateString( args->output );
     cssDir    = XSDocgen_AppendString( cssDir, "/CSS" );
     phpDir    = XSDocgen_CreateString( args->output );
     phpDir    = XSDocgen_AppendString( phpDir, "/PHP" );
+    
+    if( args->clear )
+    {
+        printf( "Clearing previous output...\n" );
+        
+        if( XSDocgen_ClearFiles( xmlDir ) == false ) { printf( "Error clearing XML resources\n" ); goto failure; }
+        if( XSDocgen_ClearFiles( phpDir ) == false ) { printf( "Error clearing PHP resources\n" ); goto failure; }
+        if( XSDocgen_ClearFiles( cssDir ) == false ) { printf( "Error clearing CSS resources\n" ); goto failure; }
+    }
+    
+    printf( "Creating directories...\n" );
+    
+    if( XSDocgen_CreateDirectory( args->output, "XML" ) == false ) { printf( "Error: cannot create directory (XML - %s)\n", args->output ); goto failure; }
+    if( XSDocgen_CreateDirectory( args->output, "PHP" ) == false ) { printf( "Error: cannot create directory (PHP - %s)\n", args->output ); goto failure; }
+    if( XSDocgen_CreateDirectory( args->output, "CSS" ) == false ) { printf( "Error: cannot create directory (CSS - %s)\n", args->output ); goto failure; }
+    
+    printf( "Generating XML files using HeaderDoc (this might take a while)...\n" );
+    
+    headerdoc = XSDocgen_CreateString( "headerdoc2html -u -X -H " );
     
     if( args->cpp )
     {
@@ -149,12 +167,9 @@ int main( int argc, const char * argv[] )
         headerdoc = XSDocgen_AppendString( headerdoc, "> /dev/null 2>&1" );
     }
     
-    e = 0;//e = system( headerdoc );
+    e = system( headerdoc );
     
-    XSDocgen_FreeString( headerdoc );
-    XSDocgen_FreeString( xmlDir );
-    
-    if( e != 0 ) { printf( "Error: %i\n", e ); return EXIT_FAILURE; }
+    if( e != 0 ) { printf( "Error: %i\n", e ); goto failure; }
     
     printf( "Generating index file...\n" );
     
@@ -221,8 +236,7 @@ int main( int argc, const char * argv[] )
         index = XSDocgen_AppendString( index, "', '" );
         index = XSDocgen_AppendString( index, page->title );
         index = XSDocgen_AppendString( index, "' );\n" );
-        
-        page = page->next;
+        page  = page->next;
     }
     
     index = XSDocgen_AppendString
@@ -243,6 +257,21 @@ int main( int argc, const char * argv[] )
         "    <meta name=\"rating\" content=\"General\" />\n"
         "    <meta name=\"robots\" content=\"all\" />\n"
         "    <meta name=\"generator\" content=\"XSDocgen\" />\n"
+    );
+    
+    headerLine = args->headerLines;
+    
+    while( headerLine != NULL )
+    {
+        index      = XSDocgen_AppendString( index, "    " );
+        index      = XSDocgen_AppendString( index, headerLine->html );
+        index      = XSDocgen_AppendString( index, "\n" );
+        headerLine = headerLine->next;
+    }
+    
+    index = XSDocgen_AppendString
+    (
+        index,
         "</head>\n"
         "<body>\n"
         "<?php\n"
@@ -261,26 +290,45 @@ int main( int argc, const char * argv[] )
     
     if( fh == NULL )
     {
-        XSDocgen_FreeString( indexFile );
-        XSDocgen_FreeString( index );
-        
         printf( "Error: cannot open index file (%s)", indexFile );
         
-        return EXIT_FAILURE;
+        goto failure;
     }
     
     fwrite( index, 1, strlen( index ), fh );
-    fclose( fh );
-    
-    XSDocgen_FreeString( indexFile );
-    XSDocgen_FreeString( index );
     
     printf( "Copying resources...\n" );
     
-    XSDocgen_CopyFiles( "/usr/local/share/XSDocgen/CSS", cssDir );
-    XSDocgen_CopyFiles( "/usr/local/share/XSDocgen/PHP", phpDir );
+    if( XSDocgen_CopyFiles( "/usr/local/share/XSDocgen/CSS", cssDir ) == false ) { printf( "Error copying CSS resources\n" ); goto failure; };
+    if( XSDocgen_CopyFiles( "/usr/local/share/XSDocgen/PHP", phpDir ) == false ) { printf( "Error copying PHP resources\n" ); goto failure; };
     
     printf( "Done...\n" );
     
+    success:
+    
+    XSDocgen_FreeArguments( args );
+    XSDocgen_FreeString( xmlDir );
+    XSDocgen_FreeString( phpDir );
+    XSDocgen_FreeString( cssDir );
+    XSDocgen_FreeString( headerdoc );
+    XSDocgen_FreeString( indexFile );
+    XSDocgen_FreeString( index );
+    
+    fclose( fh );
+    
     return EXIT_SUCCESS;
+    
+    failure:
+    
+    XSDocgen_FreeArguments( args );
+    XSDocgen_FreeString( xmlDir );
+    XSDocgen_FreeString( phpDir );
+    XSDocgen_FreeString( cssDir );
+    XSDocgen_FreeString( headerdoc );
+    XSDocgen_FreeString( indexFile );
+    XSDocgen_FreeString( index );
+    
+    fclose( fh );
+    
+    return EXIT_FAILURE;
 }
