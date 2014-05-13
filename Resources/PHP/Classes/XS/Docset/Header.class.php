@@ -308,7 +308,17 @@ class XS_Docset_Header extends XS_Docset_Member
         {
             foreach( $this->_xml->classes->children() as $class )
             {
-                $this->_classes[] = new XS_Docset_Class( $class );
+                if( isset( $class->classes ) )
+                {
+                    foreach( $class->classes->children() as $class )
+                    {
+                        $this->_classes[] = new XS_Docset_Class( $class );
+                    }
+                }
+                else
+                {
+                    $this->_classes[] = new XS_Docset_Class( $class );
+                }
             }
         }
         
