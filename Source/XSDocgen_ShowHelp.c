@@ -37,7 +37,7 @@ void XSDocgen_ShowHelp( void )
         "\n"
         "    --help                         Displays the program's help.\n"
         "    --version                      Displays the program's version.\n"
-        "    --silent                       Don't output anything to the standard output (including errors).\n"
+        "    --verbose                      Displays the output from HeaderDoc.\n"
         "    --enable-c++                   Turns on C++ support for HeaderDoc.\n"
         "    --with-headerdoc [PATH]        Specifies a custom path for the `headerdoc2html` utility.\n"
         "    --source [PATH]                The path of the source files/headers (mandatory).\n"
