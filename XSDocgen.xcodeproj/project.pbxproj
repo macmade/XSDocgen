@@ -18,6 +18,7 @@
 		057202AE19216CD5004644BB /* XSDocgen_CreateString.c in Sources */ = {isa = PBXBuildFile; fileRef = 057202AB19216CD5004644BB /* XSDocgen_CreateString.c */; };
 		057202AF19216CD5004644BB /* XSDocgen_FreeString.c in Sources */ = {isa = PBXBuildFile; fileRef = 057202AC19216CD5004644BB /* XSDocgen_FreeString.c */; };
 		057202B1192171FA004644BB /* XSDocgen_FileExists.c in Sources */ = {isa = PBXBuildFile; fileRef = 057202B0192171FA004644BB /* XSDocgen_FileExists.c */; };
+		05E79F0519220AD800C9C25D /* XSDocgen_CopyFiles.c in Sources */ = {isa = PBXBuildFile; fileRef = 05E79F0419220AD800C9C25D /* XSDocgen_CopyFiles.c */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXCopyFilesBuildPhase section */
@@ -51,6 +52,7 @@
 		058C2B171921521300F5AAA4 /* XSDocgen_ParseArguments.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = XSDocgen_ParseArguments.c; sourceTree = "<group>"; };
 		058C2B181921521300F5AAA4 /* XSDocgen_ShowHelp.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = XSDocgen_ShowHelp.c; sourceTree = "<group>"; };
 		058C2B191921521300F5AAA4 /* XSDocgen_ShowVersion.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = XSDocgen_ShowVersion.c; sourceTree = "<group>"; };
+		05E79F0419220AD800C9C25D /* XSDocgen_CopyFiles.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = XSDocgen_CopyFiles.c; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -102,6 +104,7 @@
 				057202B0192171FA004644BB /* XSDocgen_FileExists.c */,
 				057202A1192162EE004644BB /* XSDocgen_DirectoryExists.c */,
 				057202A3192165BF004644BB /* XSDocgen_CreateDirectory.c */,
+				05E79F0419220AD800C9C25D /* XSDocgen_CopyFiles.c */,
 				057202AA19216CD5004644BB /* XSDocgen_AppendString.c */,
 				057202AB19216CD5004644BB /* XSDocgen_CreateString.c */,
 				057202AC19216CD5004644BB /* XSDocgen_FreeString.c */,
@@ -197,6 +200,7 @@
 				0572029F1921537F004644BB /* XSDocgen_ShowVersion.c in Sources */,
 				057202AF19216CD5004644BB /* XSDocgen_FreeString.c in Sources */,
 				057202A2192162EE004644BB /* XSDocgen_DirectoryExists.c in Sources */,
+				05E79F0519220AD800C9C25D /* XSDocgen_CopyFiles.c in Sources */,
 				057202B1192171FA004644BB /* XSDocgen_FileExists.c in Sources */,
 				0572029E1921537F004644BB /* XSDocgen_ShowHelp.c in Sources */,
 			);

@@ -29,7 +29,6 @@
 #include <stdlib.h>
 #include <string.h>
 #include <errno.h>
-
 #include <stdio.h>
 
 bool XSDocgen_CreateDirectory( const char * path, const char * name )

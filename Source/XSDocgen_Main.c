@@ -36,6 +36,8 @@ int main( int argc, const char * argv[] )
     int                  e;
     char               * headerdoc;
     char               * xmlDir;
+    char               * cssDir;
+    char               * phpDir;
     char               * index;
     char               * indexFile;
     FILE               * fh;
@@ -117,8 +119,13 @@ int main( int argc, const char * argv[] )
     printf( "Generating XML files using HeaderDoc (this might take a while)...\n" );
     
     headerdoc = XSDocgen_CreateString( "headerdoc2html -u -X -H " );
+    
     xmlDir    = XSDocgen_CreateString( args->output );
     xmlDir    = XSDocgen_AppendString( xmlDir, "/XML" );
+    cssDir    = XSDocgen_CreateString( args->output );
+    cssDir    = XSDocgen_AppendString( cssDir, "/CSS" );
+    phpDir    = XSDocgen_CreateString( args->output );
+    phpDir    = XSDocgen_AppendString( phpDir, "/PHP" );
     
     if( args->cpp )
     {
@@ -142,7 +149,7 @@ int main( int argc, const char * argv[] )
         headerdoc = XSDocgen_AppendString( headerdoc, "> /dev/null 2>&1" );
     }
     
-    e = system( headerdoc );
+    e = 0;//e = system( headerdoc );
     
     XSDocgen_FreeString( headerdoc );
     XSDocgen_FreeString( xmlDir );
@@ -269,6 +276,10 @@ int main( int argc, const char * argv[] )
     XSDocgen_FreeString( index );
     
     printf( "Copying resources...\n" );
+    
+    XSDocgen_CopyFiles( "/usr/local/share/XSDocgen/CSS", cssDir );
+    XSDocgen_CopyFiles( "/usr/local/share/XSDocgen/PHP", phpDir );
+    
     printf( "Done...\n" );
     
     return EXIT_SUCCESS;
