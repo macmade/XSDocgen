@@ -39,7 +39,6 @@ void XSDocgen_ShowHelp( void )
         "    --version                      Displays the program's version.\n"
         "    --verbose                      Displays the output from HeaderDoc.\n"
         "    --enable-c++                   Turns on C++ support for HeaderDoc.\n"
-        "    --with-headerdoc [PATH]        Specifies a custom path for the `headerdoc2html` utility.\n"
         "    --source [PATH]                The path of the source files/headers (mandatory).\n"
         "    --output [PATH]                The path of the output directory (mandatory - the directory must exist).\n"
         "    --clear                        Clears all previous output files from the XSDocgen output directories.\n"
