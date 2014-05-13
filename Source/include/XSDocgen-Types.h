@@ -37,28 +37,37 @@ typedef struct XSDocgen_PageStruct
 }
 XSDocgen_Page;
 
+typedef struct XSDocgen_HTMLHeaderLineStruct
+{
+    const char                           * html;
+    struct XSDocgen_HTMLHeaderLineStruct * next;
+}
+XSDocgen_HTMLHeaderLine;
+
 typedef struct
 {
-    bool              help;
-    bool              version;
-    bool              verbose;
-    bool              cpp;
-    char              _pad_0[ 4 ];
-    const char      * source;
-    const char      * output;
-    const char      * projectName;
-    const char      * projectCopyright;
-    const char      * projectVersion;
-    const char      * projectTimezone;
-    const char      * companyName;
-    const char      * companyURL;
-    const char      * pageHome;
-    XSDocgen_Page   * pages;
-    const char      * excludeFile;
-    const char      * sourceRootPrefix;
-    const char      * classesPrefix;
-    const char      * functionsPrefix;
-    const char      * typesPrefix;
+    bool                      help;
+    bool                      version;
+    bool                      verbose;
+    bool                      cpp;
+    bool                      clear;
+    char                      _pad_0[ 3 ];
+    const char              * source;
+    const char              * output;
+    const char              * projectName;
+    const char              * projectCopyright;
+    const char              * projectVersion;
+    const char              * projectTimezone;
+    const char              * companyName;
+    const char              * companyURL;
+    const char              * pageHome;
+    XSDocgen_Page           * pages;
+    const char              * excludeFile;
+    const char              * sourceRootPrefix;
+    const char              * classesPrefix;
+    const char              * functionsPrefix;
+    const char              * typesPrefix;
+    XSDocgen_HTMLHeaderLine * headerLines;
 }
 XSDocgen_Arguments;
 

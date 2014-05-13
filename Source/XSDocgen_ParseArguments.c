@@ -68,6 +68,10 @@ XSDocgen_Arguments * XSDocgen_ParseArguments( int argc, const char ** argv )
         {
             args->cpp = true;
         }
+        else if( strcmp( argv[ i ], "--clear" ) == 0 )
+        {
+            args->clear = true;
+        }
         else if( strcmp( argv[ i ], "--source" ) == 0 && i < ( argc - 1 ) )
         {
             args->source = argv[ ++i ];
@@ -169,6 +173,45 @@ XSDocgen_Arguments * XSDocgen_ParseArguments( int argc, const char ** argv )
                         if( prev->next == NULL )
                         {
                             prev->next = page;
+                            
+                            break;
+                        }
+                        
+                        prev = prev->next;
+                    }
+                }
+            }
+        }
+        else if( strcmp( argv[ i ], "--html-header-add" ) == 0 && i < ( argc - 1 ) )
+        {
+            args->help = ( help == false ) ? false : true;
+            
+            {
+                XSDocgen_HTMLHeaderLine * line;
+                XSDocgen_HTMLHeaderLine * prev;
+                
+                line = calloc( sizeof( XSDocgen_HTMLHeaderLine ), 1 );
+                
+                if( line == NULL )
+                {
+                    continue;
+                }
+                
+                line->html = argv[ ++i ];
+                
+                prev = args->headerLines;
+                
+                if( prev == NULL )
+                {
+                    args->headerLines = line;
+                }
+                else
+                {
+                    while( prev != NULL )
+                    {
+                        if( prev->next == NULL )
+                        {
+                            prev->next = line;
                             
                             break;
                         }

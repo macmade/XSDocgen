@@ -29,8 +29,10 @@
 
 void XSDocgen_FreeArguments( XSDocgen_Arguments * args )
 {
-    XSDocgen_Page * page;
-    XSDocgen_Page * next;
+    XSDocgen_Page           * page;
+    XSDocgen_Page           * nextPage;
+    XSDocgen_HTMLHeaderLine * line;
+    XSDocgen_HTMLHeaderLine * nextLine;
     
     if( args == NULL )
     {
@@ -41,11 +43,22 @@ void XSDocgen_FreeArguments( XSDocgen_Arguments * args )
     
     while( page != NULL )
     {
-        next = page->next;
+        nextPage = page->next;
         
         free( page );
         
-        page = next;
+        page = nextPage;
+    }
+    
+    line = args->headerLines;
+    
+    while( line != NULL )
+    {
+        nextLine = line->next;
+        
+        free( line );
+        
+        line = nextLine;
     }
     
     free( args );
