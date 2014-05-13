@@ -68,11 +68,15 @@ class XS_Docset_Header extends XS_Docset_Member
         }
         
         $path = $this->_xml[ 'headerpath' ];
-        $pos  = strpos( $path, $this->_sourceRootPrefix );
         
-        if( $pos !== false )
+        if( $this->_sourceRootPrefix !== NULL && strlen( $this->_sourceRootPrefix ) > 0 )
         {
-            $path = substr( $path, $pos + 1 );
+            $pos  = strpos( $path, $this->_sourceRootPrefix );
+        
+            if( $pos !== false )
+            {
+                $path = substr( $path, $pos + 1 );
+            }
         }
         
         $this->_path = $path;
