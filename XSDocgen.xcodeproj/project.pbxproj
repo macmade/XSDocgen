@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		0504B3D1192292870074A488 /* XSDocgen_ClearFiles.c in Sources */ = {isa = PBXBuildFile; fileRef = 0504B3D0192292870074A488 /* XSDocgen_ClearFiles.c */; };
 		0572029B1921537F004644BB /* XSDocgen_Main.c in Sources */ = {isa = PBXBuildFile; fileRef = 058C2B101921464600F5AAA4 /* XSDocgen_Main.c */; };
 		0572029C1921537F004644BB /* XSDocgen_FreeArguments.c in Sources */ = {isa = PBXBuildFile; fileRef = 058C2B161921521300F5AAA4 /* XSDocgen_FreeArguments.c */; };
 		0572029D1921537F004644BB /* XSDocgen_ParseArguments.c in Sources */ = {isa = PBXBuildFile; fileRef = 058C2B171921521300F5AAA4 /* XSDocgen_ParseArguments.c */; };
@@ -34,6 +35,20 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
+		0504B3D0192292870074A488 /* XSDocgen_ClearFiles.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = XSDocgen_ClearFiles.c; sourceTree = "<group>"; };
+		0504B3D41922A2390074A488 /* footer-bg.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "footer-bg.png"; sourceTree = "<group>"; };
+		0504B3D51922A2390074A488 /* header-bg.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "header-bg.png"; sourceTree = "<group>"; };
+		0504B3D61922A2390074A488 /* package.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = package.png; sourceTree = "<group>"; };
+		0504B3D71922A2390074A488 /* print.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = print.png; sourceTree = "<group>"; };
+		0504B3D81922A2390074A488 /* search.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = search.png; sourceTree = "<group>"; };
+		0504B3D91922A2390074A488 /* XSDoc.css */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.css; path = XSDoc.css; sourceTree = "<group>"; };
+		0504B3DE1922A2390074A488 /* Base.class.php */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.script.php; path = Base.class.php; sourceTree = "<group>"; };
+		0504B3DF1922A2390074A488 /* Function.class.php */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.script.php; path = Function.class.php; sourceTree = "<group>"; };
+		0504B3E01922A2390074A488 /* Header.class.php */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.script.php; path = Header.class.php; sourceTree = "<group>"; };
+		0504B3E11922A2390074A488 /* Macro.class.php */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.script.php; path = Macro.class.php; sourceTree = "<group>"; };
+		0504B3E21922A2390074A488 /* Member.class.php */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.script.php; path = Member.class.php; sourceTree = "<group>"; };
+		0504B3E31922A2390074A488 /* Type.class.php */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.script.php; path = Type.class.php; sourceTree = "<group>"; };
+		0504B3E41922A2390074A488 /* Docset.class.php */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.script.php; path = Docset.class.php; sourceTree = "<group>"; };
 		0572029119215379004644BB /* XSDocgen */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; includeInIndex = 0; path = XSDocgen; sourceTree = BUILT_PRODUCTS_DIR; };
 		057202A01921554C004644BB /* XSDocgen-Warnings.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "XSDocgen-Warnings.h"; sourceTree = "<group>"; };
 		057202A1192162EE004644BB /* XSDocgen_DirectoryExists.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = XSDocgen_DirectoryExists.c; sourceTree = "<group>"; };
@@ -66,6 +81,67 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		0504B3D21922A2390074A488 /* CSS */ = {
+			isa = PBXGroup;
+			children = (
+				0504B3D31922A2390074A488 /* Resources */,
+				0504B3D91922A2390074A488 /* XSDoc.css */,
+			);
+			name = CSS;
+			path = Resources/CSS;
+			sourceTree = SOURCE_ROOT;
+		};
+		0504B3D31922A2390074A488 /* Resources */ = {
+			isa = PBXGroup;
+			children = (
+				0504B3D41922A2390074A488 /* footer-bg.png */,
+				0504B3D51922A2390074A488 /* header-bg.png */,
+				0504B3D61922A2390074A488 /* package.png */,
+				0504B3D71922A2390074A488 /* print.png */,
+				0504B3D81922A2390074A488 /* search.png */,
+			);
+			path = Resources;
+			sourceTree = "<group>";
+		};
+		0504B3DA1922A2390074A488 /* PHP */ = {
+			isa = PBXGroup;
+			children = (
+				0504B3DB1922A2390074A488 /* Classes */,
+			);
+			name = PHP;
+			path = Resources/PHP;
+			sourceTree = SOURCE_ROOT;
+		};
+		0504B3DB1922A2390074A488 /* Classes */ = {
+			isa = PBXGroup;
+			children = (
+				0504B3DC1922A2390074A488 /* XS */,
+			);
+			path = Classes;
+			sourceTree = "<group>";
+		};
+		0504B3DC1922A2390074A488 /* XS */ = {
+			isa = PBXGroup;
+			children = (
+				0504B3DD1922A2390074A488 /* Docset */,
+				0504B3E41922A2390074A488 /* Docset.class.php */,
+			);
+			path = XS;
+			sourceTree = "<group>";
+		};
+		0504B3DD1922A2390074A488 /* Docset */ = {
+			isa = PBXGroup;
+			children = (
+				0504B3DE1922A2390074A488 /* Base.class.php */,
+				0504B3DF1922A2390074A488 /* Function.class.php */,
+				0504B3E01922A2390074A488 /* Header.class.php */,
+				0504B3E11922A2390074A488 /* Macro.class.php */,
+				0504B3E21922A2390074A488 /* Member.class.php */,
+				0504B3E31922A2390074A488 /* Type.class.php */,
+			);
+			path = Docset;
+			sourceTree = "<group>";
+		};
 		0572029219215379004644BB /* Products */ = {
 			isa = PBXGroup;
 			children = (
@@ -88,6 +164,8 @@
 		058C2B0E1921462F00F5AAA4 /* Resource */ = {
 			isa = PBXGroup;
 			children = (
+				0504B3D21922A2390074A488 /* CSS */,
+				0504B3DA1922A2390074A488 /* PHP */,
 			);
 			path = Resource;
 			sourceTree = "<group>";
@@ -105,6 +183,7 @@
 				057202A1192162EE004644BB /* XSDocgen_DirectoryExists.c */,
 				057202A3192165BF004644BB /* XSDocgen_CreateDirectory.c */,
 				05E79F0419220AD800C9C25D /* XSDocgen_CopyFiles.c */,
+				0504B3D0192292870074A488 /* XSDocgen_ClearFiles.c */,
 				057202AA19216CD5004644BB /* XSDocgen_AppendString.c */,
 				057202AB19216CD5004644BB /* XSDocgen_CreateString.c */,
 				057202AC19216CD5004644BB /* XSDocgen_FreeString.c */,
@@ -203,6 +282,7 @@
 				05E79F0519220AD800C9C25D /* XSDocgen_CopyFiles.c in Sources */,
 				057202B1192171FA004644BB /* XSDocgen_FileExists.c in Sources */,
 				0572029E1921537F004644BB /* XSDocgen_ShowHelp.c in Sources */,
+				0504B3D1192292870074A488 /* XSDocgen_ClearFiles.c in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
