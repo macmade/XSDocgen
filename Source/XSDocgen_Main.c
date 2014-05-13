@@ -145,9 +145,14 @@ int main( int argc, const char * argv[] )
     
     headerdoc = XSDocgen_CreateString( "headerdoc2html -u -X -H " );
     
+    if( args->undocumented )
+    {
+        headerdoc = XSDocgen_AppendString( headerdoc, "-E " );
+    }
+    
     if( args->cpp )
     {
-        headerdoc = XSDocgen_AppendString( headerdoc, "--enable-cpp" );
+        headerdoc = XSDocgen_AppendString( headerdoc, "--enable-cpp " );
     }
     
     if( args->excludeFile )

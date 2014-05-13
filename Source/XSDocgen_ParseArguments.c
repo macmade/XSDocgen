@@ -72,6 +72,10 @@ XSDocgen_Arguments * XSDocgen_ParseArguments( int argc, const char ** argv )
         {
             args->clear = true;
         }
+        else if( strcmp( argv[ i ], "--undocumented" ) == 0 )
+        {
+            args->undocumented = true;
+        }
         else if( strcmp( argv[ i ], "--source" ) == 0 && i < ( argc - 1 ) )
         {
             args->source = argv[ ++i ];

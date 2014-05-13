@@ -51,7 +51,8 @@ typedef struct
     bool                      verbose;
     bool                      cpp;
     bool                      clear;
-    char                      _pad_0[ 3 ];
+    bool                      undocumented;
+    char                      _pad_0[ 2 ];
     const char              * source;
     const char              * output;
     const char              * projectName;
