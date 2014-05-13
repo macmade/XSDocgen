@@ -39,6 +39,7 @@ bool XSDocgen_FileExists( const char * path );
 bool XSDocgen_DirectoryExists( const char * path );
 bool XSDocgen_CreateDirectory( const char * path, const char * name );
 bool XSDocgen_CopyFiles( const char * source, const char * destination );
+bool XSDocgen_ClearFiles( const char * path );
 
 char * XSDocgen_CreateString( const char * str );
 char * XSDocgen_AppendString( char * str, const char * append );

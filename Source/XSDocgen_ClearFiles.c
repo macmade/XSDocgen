@@ -26,34 +26,20 @@
 
 #include <XSDocgen.h>
 #include <sys/stat.h>
-#include <stdlib.h>
-#include <string.h>
-#include <stdio.h>
 #include <dirent.h>
-#include <sys/stat.h>
+#include <unistd.h>
+#include <string.h>
 
-static void __XSDocgen_CopyFiles( DIR * dir, const char * source, const char * destination );
-static void __XSDocgen_CopyFiles( DIR * dir, const char * source, const char * destination )
+static void __XSDocgen_ClearFiles( DIR * dir, const char * path );
+static void __XSDocgen_ClearFiles( DIR * dir, const char * path )
 {
     struct stat     s;
     struct dirent * file;
     int             e;
     char          * filePath;
-    char          * destPath;
     DIR           * sub;
-    FILE          * fh1;
-    FILE          * fh2;
-    char          * buf;
-    size_t          len;
     
-    if( dir == NULL || source == NULL || destination == NULL )
-    {
-        return;
-    }
-    
-    buf = malloc( 4096 );
-    
-    if( buf == NULL )
+    if( dir == NULL || path == NULL )
     {
         return;
     }
@@ -65,12 +51,9 @@ static void __XSDocgen_CopyFiles( DIR * dir, const char * source, const char * d
             continue;
         }
         
-        filePath = XSDocgen_CreateString( source );
+        filePath = XSDocgen_CreateString( path );
         filePath = XSDocgen_AppendString( filePath, "/" );
         filePath = XSDocgen_AppendString( filePath, file->d_name );
-        destPath = XSDocgen_CreateString( destination );
-        destPath = XSDocgen_AppendString( destPath, "/" );
-        destPath = XSDocgen_AppendString( destPath, file->d_name );
         
         e = stat( filePath, &s );
         
@@ -82,65 +65,47 @@ static void __XSDocgen_CopyFiles( DIR * dir, const char * source, const char * d
                 
                 if( sub != NULL )
                 {
-                    XSDocgen_CreateDirectory( destination, file->d_name );
-                    __XSDocgen_CopyFiles( sub, filePath, destPath );
-                    closedir( sub );
+                    __XSDocgen_ClearFiles( sub, filePath );
+                    rmdir( filePath );
                 }
             }
             else if( S_ISREG( s.st_mode ) )
             {
-                fh1 = fopen( filePath, "rb" );
-                fh2 = fopen( destPath, "wb" );
-                
-                if( fh1 != NULL && fh2 != NULL )
-                {
-                    while( !feof( fh1 ) )
-                    {
-                        len = fread( buf, 1, 4096, fh1 );
-                        
-                        fwrite( buf, 1, len, fh2 );
-                    }
-                }
-                
-                fclose( fh1 );
-                fclose( fh2 );
+                unlink( filePath );
             }
         }
         
         XSDocgen_FreeString( filePath );
-        XSDocgen_FreeString( destPath );
     }
-    
-    free( buf );
 }
 
-bool XSDocgen_CopyFiles( const char * source, const char * destination )
+bool XSDocgen_ClearFiles( const char * path )
 {
     DIR * dir;
     
-    if( source == NULL || destination == NULL )
+    if( path == NULL )
     {
         return false;
     }
     
-    if( strlen( source ) == 0 || strlen( destination ) == 0 )
+    if( strlen( path ) == 0 )
     {
         return false;
     }
     
-    if( XSDocgen_DirectoryExists( source ) == false || XSDocgen_DirectoryExists( destination ) == false )
+    if( XSDocgen_DirectoryExists( path ) == false )
     {
         return false;
     }
     
-    dir = opendir( source );
+    dir = opendir( path );
     
     if( dir == NULL )
     {
         return false;
     }
     
-    __XSDocgen_CopyFiles( dir, source, destination );
+    __XSDocgen_ClearFiles( dir, path );
     
     closedir( dir );
     
