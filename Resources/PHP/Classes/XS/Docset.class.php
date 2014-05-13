@@ -232,6 +232,10 @@ class XS_Docset extends XS_Docset_Base
                     {
                         $this->_classes[ $header->getName() ] = $header;
                     }
+                    else if( $header->hasClass() )
+                    {
+                        $this->_classes[ $header->getName() ] = $header;
+                    }
                     else if( $this->_functionsPrefix !== NULL && strlen( $this->_functionsPrefix ) > 0 && strpos( $path, $this->_functionsPrefix ) === 0 )
                     {
                         $this->_functions[ $header->getName() ] = $header;
@@ -612,6 +616,14 @@ class XS_Docset extends XS_Docset_Base
                 $html[] = '<div class="xsdoc-file-toc">';
                 $html[] = '<h2>Public members</h2>';
                 
+                if( count( $header->getClasses() ) )
+                {
+                    $html[] = '<div class="xsdoc-file-toc-classes">';
+                    $html[] = '<h3>Classes</h3>';
+                    $html[] = $header->getClassesListHTML();
+                    $html[] = '</div>';
+                }
+                
                 if( count( $header->getFunctions() ) )
                 {
                     $html[] = '<div class="xsdoc-file-toc-functions">';
@@ -633,6 +645,14 @@ class XS_Docset extends XS_Docset_Base
                     $html[] = '<div class="xsdoc-file-toc-macros">';
                     $html[] = '<h3>Macros</h3>';
                     $html[] = $header->getMacrosListHTML();
+                    $html[] = '</div>';
+                }
+                
+                if( count( $header->getConstants() ) )
+                {
+                    $html[] = '<div class="xsdoc-file-toc-constants">';
+                    $html[] = '<h3>Constants</h3>';
+                    $html[] = $header->getConstantsListHTML();
                     $html[] = '</div>';
                 }
             
