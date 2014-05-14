@@ -45,11 +45,11 @@ class XS_Docset_Method extends XS_Docset_Member
         
         if( $this->isStatic() )
         {
-            return "+ " . $name; 
+            return "+&nbsp;" . $name; 
         }
         else
         {
-            return "- " . $name;
+            return "-&nbsp;" . $name;
         }
     }
     
