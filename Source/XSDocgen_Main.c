@@ -68,23 +68,23 @@ int main( int argc, const char * argv[] )
         goto success;
     }
     
-    if( args->source           == NULL ) { printf( "Missing argument: --source [PATH]\n" );             exit = true; }
-    if( args->output           == NULL ) { printf( "Missing argument: --output [PATH]\n" );             exit = true; }
-    if( args->projectName      == NULL ) { printf( "Missing argument: --project-name [VALUE]\n" );      exit = true; }
-    if( args->projectCopyright == NULL ) { printf( "Missing argument: --project-copyright [VALUE]\n" ); exit = true; }
-    if( args->projectVersion   == NULL ) { printf( "Missing argument: --project-version [VALUE]\n" );   exit = true; }
-    if( args->companyName      == NULL ) { printf( "Missing argument: --company-name [VALUE]\n" );      exit = true; }
+    if( args->source           == NULL ) { printf( "[ XSDocgen ]> Error - Missing argument: --source [PATH]\n" );             exit = true; }
+    if( args->output           == NULL ) { printf( "[ XSDocgen ]> Error - Missing argument: --output [PATH]\n" );             exit = true; }
+    if( args->projectName      == NULL ) { printf( "[ XSDocgen ]> Error - Missing argument: --project-name [VALUE]\n" );      exit = true; }
+    if( args->projectCopyright == NULL ) { printf( "[ XSDocgen ]> Error - Missing argument: --project-copyright [VALUE]\n" ); exit = true; }
+    if( args->projectVersion   == NULL ) { printf( "[ XSDocgen ]> Error - Missing argument: --project-version [VALUE]\n" );   exit = true; }
+    if( args->companyName      == NULL ) { printf( "[ XSDocgen ]> Error - Missing argument: --company-name [VALUE]\n" );      exit = true; }
     
-    if( args->source      != NULL && XSDocgen_DirectoryExists( args->source ) == false ) { printf( "Error: source directory does not exist (%s)\n", args->source  ); exit = true; }
-    if( args->output      != NULL && XSDocgen_DirectoryExists( args->output ) == false ) { printf( "Error: output directory does not exist (%s)\n", args->output  ); exit = true; }
-    if( args->excludeFile != NULL && XSDocgen_FileExists( args->excludeFile ) == false ) { printf( "Error: exclude file does not exist (%s)\n", args->excludeFile ); exit = true; }
+    if( args->source      != NULL && XSDocgen_DirectoryExists( args->source ) == false ) { printf( "[ XSDocgen ]> Error - source directory does not exist (%s)\n", args->source  ); exit = true; }
+    if( args->output      != NULL && XSDocgen_DirectoryExists( args->output ) == false ) { printf( "[ XSDocgen ]> Error - output directory does not exist (%s)\n", args->output  ); exit = true; }
+    if( args->excludeFile != NULL && XSDocgen_FileExists( args->excludeFile ) == false ) { printf( "[ XSDocgen ]> Error - exclude file does not exist (%s)\n", args->excludeFile ); exit = true; }
     
     if( exit )
     {
         goto failure;
     }
     
-    printf( "Starting XSDocgen\n" );
+    printf( "[ XSDocgen ]> Starting:\n" );
     printf( "\n" );
     printf( "    Source:                %s\n", args->source );
     printf( "    Output:                %s\n", args->output );
@@ -128,20 +128,20 @@ int main( int argc, const char * argv[] )
     
     if( args->clear )
     {
-        printf( "Clearing previous output...\n" );
+        printf( "[ XSDocgen ]> Clearing previous output\n" );
         
-        if( XSDocgen_ClearFiles( xmlDir ) == false ) { printf( "Error clearing XML resources\n" ); goto failure; }
-        if( XSDocgen_ClearFiles( phpDir ) == false ) { printf( "Error clearing PHP resources\n" ); goto failure; }
-        if( XSDocgen_ClearFiles( cssDir ) == false ) { printf( "Error clearing CSS resources\n" ); goto failure; }
+        if( XSDocgen_ClearFiles( xmlDir ) == false ) { printf( "[ XSDocgen ]> Error - Failed to clear the XML resources\n" ); goto failure; }
+        if( XSDocgen_ClearFiles( phpDir ) == false ) { printf( "[ XSDocgen ]> Error - Failed to clear the PHP resources\n" ); goto failure; }
+        if( XSDocgen_ClearFiles( cssDir ) == false ) { printf( "[ XSDocgen ]> Error - Failed to clear the CSS resources\n" ); goto failure; }
     }
     
-    printf( "Creating directories...\n" );
+    printf( "[ XSDocgen ]> Creating directories\n" );
     
-    if( XSDocgen_CreateDirectory( args->output, "XML" ) == false ) { printf( "Error: cannot create directory (XML - %s)\n", args->output ); goto failure; }
-    if( XSDocgen_CreateDirectory( args->output, "PHP" ) == false ) { printf( "Error: cannot create directory (PHP - %s)\n", args->output ); goto failure; }
-    if( XSDocgen_CreateDirectory( args->output, "CSS" ) == false ) { printf( "Error: cannot create directory (CSS - %s)\n", args->output ); goto failure; }
+    if( XSDocgen_CreateDirectory( args->output, "XML" ) == false ) { printf( "[ XSDocgen ]> Error - cannot create directory (XML - %s)\n", args->output ); goto failure; }
+    if( XSDocgen_CreateDirectory( args->output, "PHP" ) == false ) { printf( "[ XSDocgen ]> Error - cannot create directory (PHP - %s)\n", args->output ); goto failure; }
+    if( XSDocgen_CreateDirectory( args->output, "CSS" ) == false ) { printf( "[ XSDocgen ]> Error - cannot create directory (CSS - %s)\n", args->output ); goto failure; }
     
-    printf( "Generating XML files using HeaderDoc (this might take a while)...\n" );
+    printf( "[ XSDocgen ]> Generating XML files using HeaderDoc. This might take a while.\n" );
     
     headerdoc = XSDocgen_CreateString( "headerdoc2html -u -X -H " );
     
@@ -174,9 +174,9 @@ int main( int argc, const char * argv[] )
     
     e = system( headerdoc );
     
-    if( e != 0 ) { printf( "Error: %i\n", e ); goto failure; }
+    if( e != 0 ) { printf( "[ XSDocgen ]> Error - HeaderDoc returned %i\n", e ); goto failure; }
     
-    printf( "Generating index file...\n" );
+    printf( "[ XSDocgen ]> Generating index file\n" );
     
     index = XSDocgen_CreateString
     (
@@ -295,19 +295,19 @@ int main( int argc, const char * argv[] )
     
     if( fh == NULL )
     {
-        printf( "Error: cannot open index file (%s)", indexFile );
+        printf( "[ XSDocgen ]> Error - cannot open index file (%s)", indexFile );
         
         goto failure;
     }
     
     fwrite( index, 1, strlen( index ), fh );
     
-    printf( "Copying resources...\n" );
+    printf( "[ XSDocgen ]> Copying resources\n" );
     
     if( XSDocgen_CopyFiles( "/usr/local/share/XSDocgen/CSS", cssDir ) == false ) { printf( "Error copying CSS resources\n" ); goto failure; };
     if( XSDocgen_CopyFiles( "/usr/local/share/XSDocgen/PHP", phpDir ) == false ) { printf( "Error copying PHP resources\n" ); goto failure; };
     
-    printf( "Done...\n" );
+    printf( "[ XSDocgen ]> Documentation was successfully generated\n" );
     
     success:
     
