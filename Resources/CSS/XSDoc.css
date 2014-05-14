@@ -307,11 +307,23 @@ code {
     font-weight:            normal;
 }
 
+.xsdoc-file-toc h4 {
+    font-size:              12px;
+    margin-left:            20px;
+    border-bottom:          solid 1px #D6E0E5;
+    padding-bottom:         2px;
+    margin-bottom:          5px;
+}
+
 .xsdoc-file-toc ul {
     margin:                 0px;
     padding-left:           0px;
     list-style:             none;
     line-height:            16px;
+}
+
+.xsdoc-file-toc ul ul {
+    margin-left:            20px;
 }
 
 .xsdoc-file-toc a {
