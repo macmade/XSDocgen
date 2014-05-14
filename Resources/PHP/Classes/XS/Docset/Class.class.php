@@ -102,30 +102,101 @@ class XS_Docset_Class extends XS_Docset_Member
         return $this->_instanceVariables;
     }
     
+    public function isProtocol()
+    {
+        return $this->_xml->getName() === 'protocol';
+    }
+    
     public function __toString()
     {
         $html = array();
         
         $html[] = '<a name="' . $this->getID() . '"></a>';
         $html[] = '<a name="' . $this->getName() . '"></a>';
-        $html[] = '<h3>Class ' . $this->getName() . '</h3>';
+        
+        if( $this->isProtocol() )
+        {
+            $html[] = '<h3>Protocol ' . $this->getName() . '</h3>';
+        }
+        else
+        {
+            $html[] = '<h3>Class ' . $this->getName() . '</h3>';
+        }
+        
         $html[] = '<div class="xsdoc-class-members">';
         
-        if( count( $this->getMethods() ) )
+        if( $this->isProtocol() )
         {
-            $html[] = '<h4>Tasks</h4>';
-            $html[] = '<ul>';
-            
-            foreach( $this->getMethods() as $method )
+            if( count( $this->getMethods() ) )
             {
-                $html[] = '<li>';
-                $html[] = '<a href="#' . $method->getID() . '">';
-                $html[] = $method->getName();
-                $html[] = '</a>';
-                $html[] = '</li>';
+                $required = array();
+                $optional = array();
+                
+                foreach( $this->getMethods() as $method )
+                {
+                    if( $method->isOptional() )
+                    {
+                        $optional[] = $method;
+                    }
+                    else
+                    {
+                        $required[] = $method;
+                    }
+                }
+                
+                if( count( $required ) )
+                {
+                    $html[] = '<h4>Required Tasks</h4>';
+                    $html[] = '<ul>';
+                    
+                    foreach( $required as $method )
+                    {
+                        $html[] = '<li>';
+                        $html[] = '<a href="#' . $method->getID() . '">';
+                        $html[] = $method->getName();
+                        $html[] = '</a>';
+                        $html[] = '</li>';
+                    }
+                    
+                    $html[] = '</ul>';
+                }
+                
+                if( count( $optional ) )
+                {
+                    $html[] = '<h4>Optional Tasks</h4>';
+                    $html[] = '<ul>';
+                    
+                    foreach( $optional as $method )
+                    {
+                        $html[] = '<li>';
+                        $html[] = '<a href="#' . $method->getID() . '">';
+                        $html[] = $method->getName();
+                        $html[] = '</a>';
+                        $html[] = '</li>';
+                    }
+                    
+                    $html[] = '</ul>';
+                }
             }
-            
-            $html[] = '</ul>';
+        }
+        else
+        {
+            if( count( $this->getMethods() ) )
+            {
+                $html[] = '<h4>Tasks</h4>';
+                $html[] = '<ul>';
+                
+                foreach( $this->getMethods() as $method )
+                {
+                    $html[] = '<li>';
+                    $html[] = '<a href="#' . $method->getID() . '">';
+                    $html[] = $method->getName();
+                    $html[] = '</a>';
+                    $html[] = '</li>';
+                }
+                
+                $html[] = '</ul>';
+            }
         }
         
         if( count( $this->getProperties() ) )

@@ -623,6 +623,14 @@ class XS_Docset extends XS_Docset_Base
                     $html[] = '</div>';
                 }
                 
+                if( count( $header->getProtocols() ) )
+                {
+                    $html[] = '<div class="xsdoc-file-toc-protocols">';
+                    $html[] = '<h3>Protocols</h3>';
+                    $html[] = $header->getProtocolsListHTML();
+                    $html[] = '</div>';
+                }
+                
                 if( count( $header->getFunctions() ) )
                 {
                     $html[] = '<div class="xsdoc-file-toc-functions">';
