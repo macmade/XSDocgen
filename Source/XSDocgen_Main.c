@@ -143,7 +143,7 @@ int main( int argc, const char * argv[] )
     
     printf( "[ XSDocgen ]> Generating XML files using HeaderDoc. This might take a while...\n" );
     
-    headerdoc = XSDocgen_CreateString( "headerdoc2html -u -X -H " );
+    headerdoc = XSDocgen_CreateString( "headerdoc2html -u -X -H -c /usr/local/share/XSDocgen/headerdoc.config " );
     
     if( args->undocumented )
     {

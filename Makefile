@@ -166,6 +166,7 @@ install: all
 	@install -d -m 755 /usr/local/bin
 	@install -d -m 755 /usr/local/share/XSDocgen/CSS/Resources
 	@install -d -m 755 /usr/local/share/XSDocgen/PHP/Classes/XS/Docset
+	@install -m 644 $(DIR_RESOURCES)headerdoc.config /usr/local/share/XSDocgen
 	@install -m 644 $(DIR_RESOURCES)CSS/XSDoc.css /usr/local/share/XSDocgen/CSS
 	@for f in $(DIR_RESOURCES)CSS/Resources/*; do install -m 644 $$f /usr/local/share/XSDocgen/CSS/Resources; done
 	@for f in $(DIR_RESOURCES)PHP/Classes/XS/*.php; do install -m 644 $$f /usr/local/share/XSDocgen/PHP/Classes/XS; done
