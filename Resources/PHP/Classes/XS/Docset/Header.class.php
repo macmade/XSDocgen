@@ -81,7 +81,7 @@ class XS_Docset_Header extends XS_Docset_Member
         
         if( $this->_sourceRootPrefix !== NULL && strlen( $this->_sourceRootPrefix ) > 0 )
         {
-            $pos  = strpos( $path, $this->_sourceRootPrefix );
+            $pos  = strrpos( $path, $this->_sourceRootPrefix );
         
             if( $pos !== false )
             {
