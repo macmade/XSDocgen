@@ -95,7 +95,7 @@ bool XSDocgen_ClearFiles( const char * path )
     
     if( XSDocgen_DirectoryExists( path ) == false )
     {
-        return false;
+        return true;
     }
     
     dir = opendir( path );
