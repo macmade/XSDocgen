@@ -319,7 +319,7 @@ int main( int argc, const char * argv[] )
     XSDocgen_FreeString( indexFile );
     XSDocgen_FreeString( index );
     
-    fclose( fh );
+    if( fh != NULL ) { fclose( fh ); }
     
     return EXIT_SUCCESS;
     
@@ -333,7 +333,7 @@ int main( int argc, const char * argv[] )
     XSDocgen_FreeString( indexFile );
     XSDocgen_FreeString( index );
     
-    fclose( fh );
+    if( fh != NULL ) { fclose( fh ); }
     
     return EXIT_FAILURE;
 }

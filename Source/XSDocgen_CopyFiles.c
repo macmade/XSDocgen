@@ -102,8 +102,8 @@ static void __XSDocgen_CopyFiles( DIR * dir, const char * source, const char * d
                     }
                 }
                 
-                fclose( fh1 );
-                fclose( fh2 );
+                if( fh1 != NULL ) { fclose( fh1 ); }
+                if( fh1 != NULL ) { fclose( fh2 ); }
             }
         }
         
