@@ -59,6 +59,14 @@ class XS_Docset_Class extends XS_Docset_Member
             }
         }
         
+        if( isset( $this->_xml->functions ) )
+        {
+            foreach( $this->_xml->functions->children() as $method )
+            {
+                $this->_methods[] = new XS_Docset_Method( $this, $method );
+            }
+        }
+        
         return $this->_methods;
     }
     

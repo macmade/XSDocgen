@@ -55,6 +55,8 @@
 		0504B3E81922C56B0074A488 /* Property.class.php */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.script.php; path = Property.class.php; sourceTree = "<group>"; };
 		0504B3E91922C9DF0074A488 /* InstanceVariable.class.php */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.script.php; path = InstanceVariable.class.php; sourceTree = "<group>"; };
 		0569CBDD1923EEDC0089E263 /* headerdoc.config */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; name = headerdoc.config; path = Resources/headerdoc.config; sourceTree = SOURCE_ROOT; };
+		0569CBE119240CAD0089E263 /* ClassMember.class.php */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.script.php; path = ClassMember.class.php; sourceTree = "<group>"; };
+		0569CBE219240CAD0089E263 /* Global.class.php */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.script.php; path = Global.class.php; sourceTree = "<group>"; };
 		0572029119215379004644BB /* XSDocgen */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; includeInIndex = 0; path = XSDocgen; sourceTree = BUILT_PRODUCTS_DIR; };
 		057202A01921554C004644BB /* XSDocgen-Warnings.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "XSDocgen-Warnings.h"; sourceTree = "<group>"; };
 		057202A1192162EE004644BB /* XSDocgen_DirectoryExists.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = XSDocgen_DirectoryExists.c; sourceTree = "<group>"; };
@@ -142,6 +144,8 @@
 				0504B3DF1922A2390074A488 /* Function.class.php */,
 				0504B3E51922A9F90074A488 /* Constant.class.php */,
 				0504B3E61922AE190074A488 /* Class.class.php */,
+				0569CBE119240CAD0089E263 /* ClassMember.class.php */,
+				0569CBE219240CAD0089E263 /* Global.class.php */,
 				0504B3E71922C56B0074A488 /* Method.class.php */,
 				0504B3E81922C56B0074A488 /* Property.class.php */,
 				0504B3E91922C9DF0074A488 /* InstanceVariable.class.php */,

@@ -26,54 +26,44 @@
 
 /* $Id$ */
 
-require_once dirname( __FILE__ ) . DIRECTORY_SEPARATOR . 'ClassMember.class.php';
+require_once dirname( __FILE__ ) . DIRECTORY_SEPARATOR . 'Member.class.php';
 
-class XS_Docset_Method extends XS_Docset_ClassMember
+class XS_Docset_ClassMember extends XS_Docset_Member
 {
+    protected $_class = NULL;
+    
     public function __construct( XS_Docset_Class $class, SimpleXMLElement $xml )
     {
-        parent::__construct( $class, $xml );
+        parent::__construct( $xml );
+        
+        $this->_class = $class;
     }
     
-    public function getName()
+    public function getAccessControl()
     {
-        $name = parent::getName();
-        
-        if( $this->isStatic() )
+        if( isset( $this->_xml[ 'accessControl' ] ) && ( string )( $this->_xml[ 'accessControl' ] ) === 'protected' )
         {
-            return "+&nbsp;" . $name; 
-        }
-        else
-        {
-            return "-&nbsp;" . $name;
-        }
-    }
-    
-    public function isStatic()
-    {
-        if( !isset( $this->_xml[ 'type' ] ) )
-        {
-            return false;
+            return 'protected';
         }
         
-        if( $this->_xml[ 'type' ] == "clm" )
+        if( isset( $this->_xml[ 'accessControl' ] ) && ( string )( $this->_xml[ 'accessControl' ] ) === 'private' )
         {
-            return true;
+            return 'private';
         }
         
-        return false;
-    }
-    
-    public function isOptional()
-    {
-        return isset( $this->_xml[ 'optionalOrRequired' ] ) && ( string )( $this->_xml[ 'optionalOrRequired' ] ) === '@optional';
+        return 'public';
     }
     
     public function getNotes()
     {
-        if( $this->isOptional() )
+        if( $this->getAccessControl() === 'protected' )
         {
-            return 'This method is optional.';
+            return 'This member is protected.';
+        }
+        
+        if( $this->getAccessControl() === 'private' )
+        {
+            return 'This member is private.';
         }
         
         return parent::getNotes();
