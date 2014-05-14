@@ -72,4 +72,14 @@ class XS_Docset_Method extends XS_Docset_Member
     {
         return isset( $this->_xml[ 'optionalOrRequired' ] ) && ( string )( $this->_xml[ 'optionalOrRequired' ] ) === '@optional';
     }
+    
+    public function getNotes()
+    {
+        if( $this->isOptional() )
+        {
+            return 'This method is optional.';
+        }
+        
+        return NULL;
+    }
 }

@@ -123,6 +123,33 @@ class XS_Docset_Class extends XS_Docset_Member
             $html[] = '<h3>Class ' . $this->getName() . '</h3>';
         }
         
+        if( isset( $this->_xml->attributes ) )
+        {
+            $html[] = '<h4>Attributes</h4>';
+            $html[] = '<div class="xsdoc-class-attributes">';
+            
+            foreach( $this->_xml->attributes->children() as $attribute )
+            {
+                $html[] = '<div class="xsdoc-class-attribute">';
+                $html[] = '<div class="xsdoc-class-attribute-name">';
+                $html[] = ( string )( $attribute->name );
+                $html[] = '</div>';
+                $html[] = '<div class="xsdoc-class-attribute-value">';
+                
+                foreach( $attribute->value->children() as $value )
+                {
+                    $html[] = '<div>';
+                    $html[] = ( string )$value;
+                    $html[] = '</div>';
+                }
+                
+                $html[] = '</div>';
+                $html[] = '</div>';
+            }
+            
+            $html[] = '</div>';
+        }
+        
         $html[] = '<div class="xsdoc-class-members">';
         
         if( $this->isProtocol() )
