@@ -78,4 +78,14 @@ class XS_Docset_Method extends XS_Docset_ClassMember
         
         return parent::getNotes();
     }
+    
+    public function getAccessControl()
+    {
+        if( isset( $this->_xml[ 'lang' ] ) && ( ( string )( $this->_xml[ 'lang' ] ) === 'c' || ( string )( $this->_xml[ 'lang' ] ) === 'occ' ) )
+        {
+            return 'public';
+        }
+        
+        return parent::getAccessControl();
+    }
 }

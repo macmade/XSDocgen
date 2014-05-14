@@ -288,7 +288,7 @@ code {
     border:                 solid 1px #D6E0E5;
     border-radius:          10px;
     font-size:              10px;
-    width:                  20%;
+    min-width:              20%;
     overflow:               hidden;
 }
 
@@ -339,7 +339,7 @@ code {
 .xsdoc-file-content,
 .xsdoc-search-content {
     float:                  left;
-    width:                  70%;
+    max-width:              70%;
     margin-top:             15px;
     margin-left:            20px;
 }
@@ -403,6 +403,7 @@ code {
     float:                  right;
     font-size:              10px;
     margin-top:             10px;
+    margin-left:            10px;
 }
 
 .xsdoc-search .xsdoc-search-form {

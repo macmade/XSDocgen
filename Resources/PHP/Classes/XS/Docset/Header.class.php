@@ -676,12 +676,16 @@ class XS_Docset_Header extends XS_Docset_Member
         $html[] = '<div class="xsdoc-file-content">';
         $html[] = '<h2>' . $this->getName() . ' Reference</h2>';
         $html[] = $this->_getFileDetailsHTML();
-        $html[] = '<h3>Overview</h3>';
-        $html[] = '<p><strong>' . $this->getAbstract() . '</strong></p>';
         
-        if( strlen( $this->getDiscussion() ) )
+        if( strlen( $this->getDiscussion() ) || strlen( $this->getAbstract() ) )
         {
-            $html[] = '<p>' . $this->getDiscussion() . '</p>';
+            $html[] = '<h3>Overview</h3>';
+            $html[] = '<p><strong>' . $this->getAbstract() . '</strong></p>';
+            
+            if( strlen( $this->getDiscussion() ) )
+            {
+                $html[] = '<p>' . $this->getDiscussion() . '</p>';
+            }
         }
         
         if( count( $this->getClasses() ) )
