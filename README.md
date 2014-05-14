@@ -21,7 +21,13 @@ Highlights
 Example documentation
 ---------------------
 
-A real world example output can be found at: http://doc.xs-labs.com/XSFoundation/
+### C project:
+
+A real world C example output can be found at: http://doc.xs-labs.com/XSFoundation/
+
+### Objective-C project:
+
+A real world Objective-C example output can be found at: http://doc.xs-labs.com/ClangKit/
 
 Build & Installation
 --------------------
