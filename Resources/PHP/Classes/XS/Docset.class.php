@@ -518,12 +518,12 @@ class XS_Docset extends XS_Docset_Base
             $html[] = '<div class="xsdoc-header-buttons">';
             $html[] = '<div class="xsdoc-header-button">';
             $html[] = '<a href="' . $this->getPrintURL() . '" title="Print">';
-            $html[] = '<img src="../CSS/Resources/print.png" alt="" width="20" height="20" />';
+            $html[] = '<img src="CSS/Resources/print.png" alt="" width="20" height="20" />';
             $html[] = '</a>';
             $html[] = '</div>';
             $html[] = '<div class="xsdoc-header-button">';
             $html[] = '<a href="' . $this->getSearchURL() . '" title="Print">';
-            $html[] = '<img src="../CSS/Resources/search.png" alt="" width="20" height="20" />';
+            $html[] = '<img src="CSS/Resources/search.png" alt="" width="20" height="20" />';
             $html[] = '</a>';
             $html[] = '</div>';
             $html[] = '</div>';
