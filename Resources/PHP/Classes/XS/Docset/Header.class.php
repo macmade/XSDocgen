@@ -31,6 +31,7 @@ require_once dirname( __FILE__ ) . DIRECTORY_SEPARATOR . 'Function.class.php';
 require_once dirname( __FILE__ ) . DIRECTORY_SEPARATOR . 'Type.class.php';
 require_once dirname( __FILE__ ) . DIRECTORY_SEPARATOR . 'Macro.class.php';
 require_once dirname( __FILE__ ) . DIRECTORY_SEPARATOR . 'Constant.class.php';
+require_once dirname( __FILE__ ) . DIRECTORY_SEPARATOR . 'Global.class.php';
 require_once dirname( __FILE__ ) . DIRECTORY_SEPARATOR . 'Class.class.php';
 require_once dirname( __FILE__ ) . DIRECTORY_SEPARATOR . '..' . DIRECTORY_SEPARATOR . 'Docset.class.php';
 
@@ -54,6 +55,7 @@ class XS_Docset_Header extends XS_Docset_Member
     protected $_types               = NULL;
     protected $_macros              = NULL;
     protected $_constants           = NULL;
+    protected $_globals             = NULL;
     protected $_classes             = NULL;
     protected $_protocols           = NULL;
     
@@ -296,6 +298,26 @@ class XS_Docset_Header extends XS_Docset_Member
         return $this->_constants;
     }
     
+    public function getGlobals()
+    {
+        if( $this->_globals !== NULL )
+        {
+            return $this->_globals;
+        }
+        
+        $this->_globals = array();
+        
+        if( isset( $this->_xml->globals ) )
+        {
+            foreach( $this->_xml->globals->children() as $global )
+            {
+                $this->_globals[] = new XS_Docset_Global( $global );
+            }
+        }
+        
+        return $this->_globals;
+    }
+    
     public function getClasses()
     {
         if( $this->_classes !== NULL )
@@ -386,6 +408,7 @@ class XS_Docset_Header extends XS_Docset_Member
             || count( $this->getTypes() )
             || count( $this->getMacros() )
             || count( $this->getConstants() )
+            || count( $this->getGlobals() )
         )
         {
             return true;
@@ -461,6 +484,25 @@ class XS_Docset_Header extends XS_Docset_Member
             $html[] = '<li>';   
             $html[] = '<a href="#' . $constant->getID() . '" title="' . $constant->getName() . '">';
             $html[] = $constant->getName();   
+            $html[] = '</a>';
+            $html[] = '</li>';
+        }
+    
+        $html[] = '</ul>';
+        
+        return implode( chr( 10 ), $html );
+    }
+    
+    public function getGlobalsListHTML()
+    {
+        $html   = array();
+        $html[] = '<ul>';
+    
+        foreach( $this->getGlobals() as $global )
+        {                        
+            $html[] = '<li>';   
+            $html[] = '<a href="#' . $global->getID() . '" title="' . $global->getName() . '">';
+            $html[] = $global->getName();   
             $html[] = '</a>';
             $html[] = '</li>';
         }
@@ -695,6 +737,16 @@ class XS_Docset_Header extends XS_Docset_Member
             foreach( $this->getConstants() as $constant )
             {
                 $html[] = ( string )$constant;
+            }
+        }
+        
+        if( count( $this->getGlobals() ) )
+        {
+            $html[] = '<h3>Globals</h3>';
+            
+            foreach( $this->getGlobals() as $global )
+            {
+                $html[] = ( string )$global;
             }
         }
         

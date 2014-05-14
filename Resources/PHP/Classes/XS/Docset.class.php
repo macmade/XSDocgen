@@ -662,6 +662,14 @@ class XS_Docset extends XS_Docset_Base
                     $html[] = $header->getConstantsListHTML();
                     $html[] = '</div>';
                 }
+                
+                if( count( $header->getGlobals() ) )
+                {
+                    $html[] = '<div class="xsdoc-file-toc-globals">';
+                    $html[] = '<h3>Globals</h3>';
+                    $html[] = $header->getGlobalsListHTML();
+                    $html[] = '</div>';
+                }
             
                 $html[] = '</div>';
             }
