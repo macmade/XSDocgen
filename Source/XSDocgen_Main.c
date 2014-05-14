@@ -141,7 +141,7 @@ int main( int argc, const char * argv[] )
     if( XSDocgen_CreateDirectory( args->output, "PHP" ) == false ) { printf( "[ XSDocgen ]> Error - cannot create directory (PHP - %s)\n", args->output ); goto failure; }
     if( XSDocgen_CreateDirectory( args->output, "CSS" ) == false ) { printf( "[ XSDocgen ]> Error - cannot create directory (CSS - %s)\n", args->output ); goto failure; }
     
-    printf( "[ XSDocgen ]> Generating XML files using HeaderDoc. This might take a while.\n" );
+    printf( "[ XSDocgen ]> Generating XML files using HeaderDoc. This might take a while...\n" );
     
     headerdoc = XSDocgen_CreateString( "headerdoc2html -u -X -H " );
     
