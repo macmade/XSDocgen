@@ -68,6 +68,8 @@ typedef struct
     const char              * classesPrefix;
     const char              * functionsPrefix;
     const char              * typesPrefix;
+    const char              * analyticsCode;
+    const char              * analyticsDomain;
     XSDocgen_HTMLHeaderLine * headerLines;
 }
 XSDocgen_Arguments;

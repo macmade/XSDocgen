@@ -146,6 +146,12 @@ XSDocgen_Arguments * XSDocgen_ParseArguments( int argc, const char ** argv )
             args->typesPrefix = argv[ ++i ];
             args->help        = ( help == false ) ? false : true;
         }
+        else if( strcmp( argv[ i ], "--google-analytics" ) == 0 && i < ( argc - 2 ) )
+        {
+            args->help              = ( help == false ) ? false : true;
+            args->analyticsCode     = argv[ ++i ];
+            args->analyticsDomain   = argv[ ++i ];
+        }
         else if( strcmp( argv[ i ], "--page-add" ) == 0 && i < ( argc - 2 ) )
         {
             args->help = ( help == false ) ? false : true;

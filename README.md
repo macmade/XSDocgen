@@ -90,6 +90,8 @@ Command line options
    An optional string to add to the header of the HTML output.  
    You can use it to add custom CSS files, scripts, meta tags, etc.  
    This argument can be specified multiple times.
+ * `--google-analytics [CODE] [DOMAIN]`  
+   An optional tracking code and domain if you want to use Google Analytics.
 
 Invocation example
 ------------------

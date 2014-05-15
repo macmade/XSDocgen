@@ -274,6 +274,67 @@ int main( int argc, const char * argv[] )
         "    <meta name=\"generator\" content=\"XSDocgen\" />\n"
     );
     
+    if( args->analyticsCode && args->analyticsDomain && strlen( args->analyticsCode ) && strlen( args->analyticsDomain ) )
+    {
+        index = XSDocgen_AppendString
+        (
+            index,
+            "    <script type=\"text/javascript\">\n"
+            "        // <![CDATA[\n"
+            "        \n"
+            "        (\n"
+            "            function( i, s, o, g, r, a, m )\n"
+            "            {\n"
+            "                i[ 'GoogleAnalyticsObject' ] = r;\n"
+            "                i[ r ]                       = i[ r ] || function()\n"
+            "                {\n"
+            "                    ( i[ r ].q = i[ r ].q || [] ).push( arguments )\n"
+            "                },\n"
+            "                i[ r ].l = 1 * new Date();\n"
+            "                a        = s.createElement( o ),\n"
+            "                m        = s.getElementsByTagName( o )[ 0 ];\n"
+            "                a.async  = 1;\n"
+            "                a.src    = g;\n"
+            "            \n"
+            "                m.parentNode.insertBefore( a, m )\n"
+            "            }\n"
+            "        )\n"
+            "        (\n"
+            "            window,\n"
+            "            document,\n"
+            "            'script',\n"
+            "            '//www.google-analytics.com/analytics.js',\n"
+            "            'ga'\n"
+            "        );\n"
+            "        \n"
+            "        ga( 'create', '"
+        );
+        index = XSDocgen_AppendString
+        (
+            index,
+            args->analyticsCode
+        );
+        index = XSDocgen_AppendString
+        (
+            index,
+            "', '"
+        );
+        index = XSDocgen_AppendString
+        (
+            index,
+            args->analyticsDomain
+        );
+        index = XSDocgen_AppendString
+        (
+            index,
+            "' );\n"
+            "        ga( 'send', 'pageview' );\n"
+            "        \n"
+            "        // ]]>\n"
+            "    </script>\n"
+        );
+    }
+    
     headerLine = args->headerLines;
     
     while( headerLine != NULL )
