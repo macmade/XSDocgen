@@ -328,6 +328,20 @@ int main( int argc, const char * argv[] )
         (
             index,
             "' );\n"
+        );
+        
+        if( args->analyticsDisplayFeatures )
+        {
+            index = XSDocgen_AppendString
+            (
+                index,
+                "        ga( 'require', 'displayfeatures' );\n"
+            );
+        }
+        
+        index = XSDocgen_AppendString
+        (
+            index,
             "        ga( 'send', 'pageview' );\n"
             "        \n"
             "        // ]]>\n"

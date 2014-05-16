@@ -92,6 +92,8 @@ Command line options
    This argument can be specified multiple times.
  * `--google-analytics [CODE] [DOMAIN]`  
    An optional tracking code and domain if you want to use Google Analytics.
+ * `--google-analytics-display-features`  
+   Enables Display Advertising features on Google Analytics.
 
 Invocation example
 ------------------

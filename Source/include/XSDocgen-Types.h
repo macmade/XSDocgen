@@ -52,7 +52,8 @@ typedef struct
     bool                      cpp;
     bool                      clear;
     bool                      undocumented;
-    char                      _pad_0[ 2 ];
+    bool                      analyticsDisplayFeatures;
+    char                      _pad_0[ 1 ];
     const char              * source;
     const char              * output;
     const char              * projectName;

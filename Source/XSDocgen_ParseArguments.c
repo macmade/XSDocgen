@@ -76,6 +76,10 @@ XSDocgen_Arguments * XSDocgen_ParseArguments( int argc, const char ** argv )
         {
             args->undocumented = true;
         }
+        else if( strcmp( argv[ i ], "--google-analytics-display-features" ) == 0 )
+        {
+            args->analyticsDisplayFeatures = true;
+        }
         else if( strcmp( argv[ i ], "--source" ) == 0 && i < ( argc - 1 ) )
         {
             args->source = argv[ ++i ];
