@@ -76,6 +76,10 @@ XSDocgen_Arguments * XSDocgen_ParseArguments( int argc, const char ** argv )
         {
             args->undocumented = true;
         }
+        else if( strcmp( argv[ i ], "--old-style" ) == 0 )
+        {
+            args->oldStyle = true;
+        }
         else if( strcmp( argv[ i ], "--google-analytics-display-features" ) == 0 )
         {
             args->analyticsDisplayFeatures = true;

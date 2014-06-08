@@ -266,13 +266,29 @@ int main( int argc, const char * argv[] )
         "    <meta http-equiv=\"content-type\" content=\"text/html; charset=utf-8\" />\n"
         "    <title><?php print $DOC->getTitle(); ?></title>\n"
         "    <link rel=\"schema.dc\" href=\"http://purl.org/metadata/dublin_core_elements\" />\n"
-        "    <link href=\"CSS/XSDoc.css\" type=\"text/css\" rel=\"stylesheet\" media=\"all\" charset=\"utf-8\" />\n"
         "    <meta http-equiv=\"content-language\" content=\"en\" />\n"
         "    <meta name=\"DC.Language\" scheme=\"NISOZ39.50\" content=\"en\" />\n"
         "    <meta name=\"rating\" content=\"General\" />\n"
         "    <meta name=\"robots\" content=\"all\" />\n"
         "    <meta name=\"generator\" content=\"XSDocgen\" />\n"
     );
+    
+    if( args->oldStyle )
+    {
+        index = XSDocgen_AppendString
+        (
+            index,
+            "    <link href=\"CSS/XSDoc-Old.css\" type=\"text/css\" rel=\"stylesheet\" media=\"all\" charset=\"utf-8\" />\n"
+        );
+    }
+    else
+    {
+        index = XSDocgen_AppendString
+        (
+            index,
+            "    <link href=\"CSS/XSDoc.css\" type=\"text/css\" rel=\"stylesheet\" media=\"all\" charset=\"utf-8\" />\n"
+        );
+    }
     
     if( args->analyticsCode && args->analyticsDomain && strlen( args->analyticsCode ) && strlen( args->analyticsDomain ) )
     {

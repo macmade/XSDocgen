@@ -43,6 +43,7 @@ void XSDocgen_ShowHelp( void )
         "    --output [PATH]                        The path of the output directory (mandatory - the directory must exist).\n"
         "    --clear                                Clears all previous output files from the XSDocgen output directories.\n"
         "    --undocumented                         Keeps undocumented members.\n"
+        "    --old-style                            Uses the old documentation style (before Yosemite).\n"
         "    --project-name [VALUE]                 The name of the project (mandatory).\n"
         "    --project-copyright [VALUE]            The copyright string (mandatory - may contain date format specifiers).\n"
         "    --project-version [VALUE]              The project version string (mandatory).\n"

@@ -61,6 +61,8 @@ Command line options
    Clears all previous output files from the XSDocgen output directories.
  * `--undocumented`  
    Keeps undocumented members.
+ * `--old-style`  
+   Uses the old documentation style (before Yosemite).
  * `--project-name [VALUE]`  
    The name of the project (**mandatory**).
  * `--project-copyright [VALUE]`  

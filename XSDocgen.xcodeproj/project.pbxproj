@@ -65,6 +65,7 @@
 		057202AB19216CD5004644BB /* XSDocgen_CreateString.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = XSDocgen_CreateString.c; sourceTree = "<group>"; };
 		057202AC19216CD5004644BB /* XSDocgen_FreeString.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = XSDocgen_FreeString.c; sourceTree = "<group>"; };
 		057202B0192171FA004644BB /* XSDocgen_FileExists.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = XSDocgen_FileExists.c; sourceTree = "<group>"; };
+		057989A91944200E00DA9D54 /* XSDoc-Old.css */ = {isa = PBXFileReference; lastKnownFileType = text.css; path = "XSDoc-Old.css"; sourceTree = "<group>"; };
 		058C2B0D1921462F00F5AAA4 /* README.md */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = README.md; sourceTree = "<group>"; };
 		058C2B101921464600F5AAA4 /* XSDocgen_Main.c */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.c; path = XSDocgen_Main.c; sourceTree = "<group>"; };
 		058C2B11192146B400F5AAA4 /* Makefile */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.make; path = Makefile; sourceTree = "<group>"; };
@@ -94,6 +95,7 @@
 			children = (
 				0504B3D31922A2390074A488 /* Resources */,
 				0504B3D91922A2390074A488 /* XSDoc.css */,
+				057989A91944200E00DA9D54 /* XSDoc-Old.css */,
 			);
 			name = CSS;
 			path = Resources/CSS;
@@ -260,7 +262,7 @@
 		058C2B031921461E00F5AAA4 /* Project object */ = {
 			isa = PBXProject;
 			attributes = {
-				LastUpgradeCheck = 0510;
+				LastUpgradeCheck = 0600;
 				ORGANIZATIONNAME = "XS-Labs";
 			};
 			buildConfigurationList = 058C2B061921461E00F5AAA4 /* Build configuration list for PBXProject "XSDocgen" */;
@@ -324,7 +326,6 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
-				ARCHS = "$(ARCHS_STANDARD_32_64_BIT)";
 				CLANG_ANALYZER_DEADCODE_DEADSTORES = YES;
 				CLANG_ANALYZER_GCD = YES;
 				CLANG_ANALYZER_MEMORY_MANAGEMENT = YES;
@@ -415,6 +416,7 @@
 					Source/include,
 				);
 				MACOSX_DEPLOYMENT_TARGET = 10.6;
+				ONLY_ACTIVE_ARCH = YES;
 				RUN_CLANG_STATIC_ANALYZER = YES;
 				SDKROOT = macosx;
 			};
@@ -424,7 +426,6 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
-				ARCHS = "$(ARCHS_STANDARD_32_64_BIT)";
 				CLANG_ANALYZER_DEADCODE_DEADSTORES = YES;
 				CLANG_ANALYZER_GCD = YES;
 				CLANG_ANALYZER_MEMORY_MANAGEMENT = YES;
