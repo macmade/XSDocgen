@@ -1,3 +1,3 @@
 language: objective-c
-xcode_project: XSDocgen.xcodeproj
-xcode_scheme: XSDocgen
+compiler: clang
+script: make && make test

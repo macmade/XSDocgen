@@ -1,7 +1,7 @@
 XSDocgen
 ========
 
-[![Build Status](https://travis-ci.org/macmade/XSDocgen.svg?branch=master)](https://travis-ci.org/macmade/XSDocgen)
+[![Build Status](https://img.shields.io/travis/macmade/XSDocgen.svg?branch=master&style=flat)](https://travis-ci.org/macmade/XSDocgen)
 
 About
 -----
