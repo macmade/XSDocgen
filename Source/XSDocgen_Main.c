@@ -93,6 +93,8 @@ int main( int argc, const char * argv[] )
     printf( "    Project version:       %s\n", args->projectVersion );
     printf( "    Company name:          %s\n", args->companyName );
     printf( "    C++ support:           %s\n", ( args->cpp              ) ? "Yes"                  : "No" );
+    printf( "    Undocumented members:  %s\n", ( args->undocumented     ) ? "Yes"                  : "No" );
+    printf( "    Old style:             %s\n", ( args->oldStyle         ) ? "Yes"                  : "No" );
     printf( "    Project timezone:      %s\n", ( args->projectTimezone  ) ? args->projectTimezone  : "Not specified" );
     printf( "    Company URL:           %s\n", ( args->companyURL       ) ? args->companyURL       : "Not specified" );
     printf( "    Start page:            %s\n", ( args->pageHome         ) ? args->pageHome         : "Not specified" );
