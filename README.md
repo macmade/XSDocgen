@@ -15,6 +15,18 @@ An Apple-like documentation generator for C, C++ and Objective-C based on Header
 XSDocgen uses the [HeaderDoc](https://developer.apple.com/library/mac/documentation/DeveloperTools/Conceptual/HeaderDoc/intro/intro.html) utility to produce documentation from header files in XML format.  
 Once the XML files have been generated, it will create a standalone PHP website, displaying the documentation.
 
+Table of Contents
+-----------------
+
+  1. [Highlights](#1)
+  2. [Example documentation](#2)
+  3. [Installing](#3)
+  4. [Command line options](#4)
+  5. [Invocation example](#5)
+  6. [License](#5)
+  7. [Repository Infos](#6)
+
+<a name="1"></a>
 Highlights
 ----------
 
@@ -24,6 +36,7 @@ Highlights
  * Full XHTML 1.0 strict and CSS compliance.
  * C, C++ and Objective-C support.
 
+<a name="2"></a>
 Example documentation
 ---------------------
 
@@ -35,8 +48,17 @@ A real world C example output can be found at: http://doc.xs-labs.com/XSFoundati
 
 A real world Objective-C example output can be found at: http://doc.xs-labs.com/ClangKit/
 
-Build & Installation
---------------------
+<a name="3"></a>
+Installing
+----------
+
+### Installing with Homebrew
+
+`XSDocgen` may be installed with [Homebrew](http://brew.sh):
+
+    brew install macmade/tap/XSDocgen
+
+### Manual build & installation
 
 From the XSDocgen root directory, from a command line prompt, type:
 
@@ -46,6 +68,7 @@ From the XSDocgen root directory, from a command line prompt, type:
 This will build XSDocgen and install it in `/usr/local/`.  
 The executable will be located in `/usr/local/bin/`, while the resources will be located in `/usr/local/share/`.
 
+<a name="4"></a>
 Command line options
 --------------------
 
@@ -103,6 +126,7 @@ Command line options
  * `--google-analytics-display-features`  
    Enables Display Advertising features on Google Analytics.
 
+<a name="5"></a>
 Invocation example
 ------------------
 
@@ -114,11 +138,13 @@ Invocation example
              --company-name "XS-Labs"
              --company-url "http://www.xs-labs.com/"
 
+<a name="6"></a>
 License
 -------
 
 XSDocgen is released under the terms of the MIT license.
 
+<a name="7"></a>
 Repository Infos
 ----------------
 
